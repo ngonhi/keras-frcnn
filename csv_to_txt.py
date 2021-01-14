@@ -5,10 +5,12 @@ txt format: filename,x1,y1,x2,y2,class
 '''
 
 from optparse import OptionParser
+import os
 parser = OptionParser()
 
 parser.add_option('-c', '--csv', dest='csv_path')
 parser.add_option('-t', '--txt', dest='txt_path')
+parser.add_option('-i', '--image', dest='image_path')
 
 (options, args) = parser.parse_args()
 
@@ -18,7 +20,7 @@ with open(options.csv_path, "rt", encoding='ascii') as f:
     next(f)
     for row in f:
         row = row.split(',')
-        line = ','.join([row[0], row[4], row[5], row[6], row[7], row[3]])
+        line = ','.join([os.path.join(options.image_path, row[0]), row[4], row[5], row[6], row[7], row[3]])
         output.write(line)
         output.write('\n')
 output.close()
