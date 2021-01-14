@@ -81,8 +81,8 @@ else:
 	# set the path to weights based on backend and model
 	C.base_net_weights = nn.get_weight_path()
 
-train_imgs, classes_count, class_mapping = get_data(options.train_path, 'trainval')
-val_imgs, _, _ = get_data(options.train_path, 'test')
+train_imgs, classes_count, class_mapping = get_data(options.train_path)
+val_imgs, _, _ = get_data(options.train_path)
 
 if 'bg' not in classes_count:
 	classes_count['bg'] = 0
@@ -116,7 +116,7 @@ print(f'Num val samples {len(val_imgs)}')
 data_gen_train = data_generators.get_anchor_gt(train_imgs, classes_count, C, nn.get_img_output_length, K.common.image_dim_ordering(), mode='train')
 data_gen_val = data_generators.get_anchor_gt(val_imgs, classes_count, C, nn.get_img_output_length,K.common.image_dim_ordering(), mode='val')
 
-if K.common.image_data_format() == 'th':
+if K.image_data_format() == 'th':
 	input_shape_img = (3, None, None)
 else:
 	input_shape_img = (None, None, 3)
