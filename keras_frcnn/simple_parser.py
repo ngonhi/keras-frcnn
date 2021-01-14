@@ -33,11 +33,11 @@ def get_data(input_path):
 			if filename not in all_imgs:
 				all_imgs[filename] = {}
 				
-				img = cv2.imread(filename)
-				(rows,cols) = img.shape[:2]
+				#img = cv2.imread(filename)
+				#(rows,cols) = img.shape[:2]
 				all_imgs[filename]['filepath'] = filename
-				all_imgs[filename]['width'] = cols
-				all_imgs[filename]['height'] = rows
+				all_imgs[filename]['width'] = 1622
+				all_imgs[filename]['height'] = 626
 				all_imgs[filename]['bboxes'] = []
 				all_imgs[filename]['imageset'] = 'test'
 
