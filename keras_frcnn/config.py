@@ -10,18 +10,18 @@ class Config:
 		self.network = 'resnet50'
 
 		# setting for data augmentation
-		self.use_horizontal_flips = False
+		self.use_horizontal_flips = True
 		self.use_vertical_flips = False
 		self.rot_90 = False
 
 		# anchor box scales
-		self.anchor_box_scales = [128, 256, 512]
+		self.anchor_box_scales = [16, 64, 128]
 
 		# anchor box ratios
-		self.anchor_box_ratios = [[1, 1], [1./math.sqrt(2), 2./math.sqrt(2)], [2./math.sqrt(2), 1./math.sqrt(2)]]
+		self.anchor_box_ratios = [[1, 1], [2, 1], [1.5, 1], [0.5, 1]]
 
 		# size to resize the smallest side of the image
-		self.im_size = 416
+		self.im_size = 626
 
 		# image channel-wise mean to subtract
 		self.img_channel_mean = [103.939, 116.779, 123.68]
@@ -36,7 +36,7 @@ class Config:
 		self.balanced_classes = False
 
 		# scaling the stdev
-		self.std_scaling = 4.0
+		self.std_scaling = 2.0
 		self.classifier_regr_std = [8.0, 8.0, 4.0, 4.0]
 
 		# overlaps for RPN
@@ -55,4 +55,4 @@ class Config:
 		# https://github.com/fchollet/deep-learning-models/releases/download/v0.2/resnet50_weights_th_dim_ordering_th_kernels_notop.h5
 		# https://github.com/fchollet/deep-learning-models/releases/download/v0.2/resnet50_weights_tf_dim_ordering_tf_kernels_notop.h5
 
-		self.model_path = 'model_frcnn.vgg.hdf5'
+		self.model_path = 'model_frcnn.resnet.hdf5'
